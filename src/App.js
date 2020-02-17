@@ -1,10 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {
+  Route,
+  Switch,
+  Link,
+  BrowserRouter as Router,
+} from 'react-router-dom';
 // import { NativeRouter, Route, Link } from "react-router-native";
 import request from 'superagent'
 import PokeList from "./PokeList.js"
 import Header from './Header';
+import Detail from './Detail.js';
+import AboutMe from './AboutMe.js';
 
 export default class App extends React.Component {
   state = {
@@ -20,15 +28,19 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <div id="requiredContainer">
-        <Header />
-        { this.state.data
-        ? <PokeList data={this.state.data}/>
-        : 'loading content' 
-        } 
-      </div>
+      <Router>
+        <div>
+          <Header />
+          <Link to="/">go home</Link>
+          <Link to="./AboutMe">about me</Link>
+          <Switch>
+            <Route exact path="/:pokemon?" component={PokeList} />
+            <Route exact path="/data/:pokeId" component={Detail} />
+            <Route exact path="/:AboutMe" component={AboutMe} />
+          </Switch>
+        </div>
+      </Router>
 
     )
     }
 }
-

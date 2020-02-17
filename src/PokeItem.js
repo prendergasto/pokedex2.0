@@ -11,7 +11,7 @@ export default class PokeItem extends Component {
                     <h3>Ability: {this.props.data.ability_1}</h3>
                     <h3>Base experience: {this.props.data.base_experience}</h3>
                     <h3>Speed: {this.props.data.speed}</h3>
-                  </li>
+                </li>
             </div>
         )
     }

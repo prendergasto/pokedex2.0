@@ -28,3 +28,15 @@ HOW DO LINES 48 TO 51 WORK
 APP.JS... HOW DO THE "EXACT PATH(S)" WORK
 LINE 23 TO 26
 
+
+state = {
+    selected: null,
+    data: null,
+  }
+  async componentDidMount() {
+    const data = await request.get("https://alchemy-pokedex.herokuapp.com/api/pokedex");
+
+    console.log(data.body);
+    this.setState({ data: data.body.results })
+
+  }
